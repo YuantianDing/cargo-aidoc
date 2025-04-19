@@ -72,16 +72,16 @@ def main(crate_path: str, quiet: bool, dry_run: bool, clean_cache: bool, force: 
     if os.path.exists(gitignore_path):
         with open(gitignore_path, "r+") as f:
             lines = f.readlines()
-            # Check if .cargo-docgen is already ignored
-            if not any(".cargo-docgen/" in line.strip() for line in lines):
+            # Check if .cargo-aidoc is already ignored
+            if not any(".cargo-aidoc/" in line.strip() for line in lines):
                 # Ensure the file ends with a newline before appending
                 if lines and not lines[-1].endswith('\n'):
                     f.write('\n')
-                f.write(".cargo-docgen/\n")
+                f.write(".cargo-aidoc/\n")
                 if not quiet:
-                    print(colored("Added '.cargo-docgen' to .gitignore", "yellow"))
+                    print(colored("Added '.cargo-aidoc' to .gitignore", "yellow"))
     
-    config_path = os.path.join(crate_path, "cargo-docgen.toml")
+    config_path = os.path.join(crate_path, "cargo-aidoc.toml")
     if not os.path.exists(config_path):
         with open(config_path, "w") as f:
             f.write(toml.dumps({
@@ -128,7 +128,7 @@ def main(crate_path: str, quiet: bool, dry_run: bool, clean_cache: bool, force: 
     if clean_cache:
         print(colored("Cleaning cache...", "yellow"))
         try:
-            shutil.rmtree(".cargo-docgen")
+            shutil.rmtree(".cargo-aidoc")
         except Exception as e:
             pass
         print(colored("Cache cleaned.", "green"))

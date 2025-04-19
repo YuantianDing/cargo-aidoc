@@ -1,6 +1,6 @@
-# cargo-docgen
+# cargo-aidoc
 
-`cargo-docgen` is a Python script that leverages Large Language Models (LLMs) to automatically generate documentation comments for Rust code items like functions, structs, enums, etc.
+`cargo-aidoc` is a Python script that leverages Large Language Models (LLMs) to automatically generate documentation comments for Rust code items like functions, structs, enums, etc.
 
 ## Features
 
@@ -8,7 +8,7 @@
 *   Identifies documentable items (functions, structs, enums, etc.).
 *   Uses LLMs (configurable via `mirascope`) to generate documentation comments.
 *   Integrates with Git to prevent overwriting uncommitted changes (can be overridden with `--force`).
-*   Configurable via `cargo-docgen.toml`.
+*   Configurable via `cargo-aidoc.toml`.
 *   Supports dry runs to preview generated documentation.
 
 ## Installation
@@ -16,7 +16,7 @@
 This project uses `uv` for package management.
 
 ```
-uv tool install cargo-docgen
+uv tool install cargo-aidoc
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ uv tool install cargo-docgen
 Run the script pointing it to the root of your Rust crate:
 
 ```bash
-cargo docgen /path/to/your/rust/crate
+cargo aidoc /path/to/your/rust/crate
 ```
 
 **Options:**
@@ -33,23 +33,23 @@ cargo docgen /path/to/your/rust/crate
 *   `-q`, `--quiet`: Disable verbose output.
 *   `--dry-run`: Generate documentation but do not write changes to the files.
 *   `--force`: Ignore the Git uncommitted changes check and modify files directly.
-*   `-c`, `--clean-cache`: Remove the `.cargo-docgen` cache directory after execution.
+*   `-c`, `--clean-cache`: Remove the `.cargo-aidoc` cache directory after execution.
 
 **Example:**
 
 ```bash
 # Generate docs for a crate, showing verbose output, but don't modify files
-cargo docgen . --quiet --dry-run
+cargo aidoc . --quiet --dry-run
 
 # Generate and write docs, forcing overwrite even with uncommitted changes
-cargo docgen . --force
+cargo aidoc . --force
 ```
 
 ## Configuration
 
-The script looks for a `cargo-docgen.toml` file in the root of the target crate. If it doesn't exist, a default one will be created.
+The script looks for a `cargo-aidoc.toml` file in the root of the target crate. If it doesn't exist, a default one will be created.
 
-**Default `cargo-docgen.toml`:**
+**Default `cargo-aidoc.toml`:**
 
 ```toml
 [llm]

@@ -8,4 +8,4 @@ wheels/
 
 # Virtual environments
 .venv
-.cargo-docgen
+.cargo-aidoc

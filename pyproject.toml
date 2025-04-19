@@ -1,6 +1,6 @@
 [project]
-name = "cargo-docgen"
-version = "0.1.4"
+name = "cargo-aidoc"
+version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = "==3.11.12"
@@ -14,4 +14,4 @@ dependencies = [
 ]
 
 [project.scripts]
-cargo-docgen = "main:cargo_main"
+cargo-aidoc = "main:cargo_main"

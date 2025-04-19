@@ -16,7 +16,7 @@ from model import dynLLM
 #         if os.path.exists(os.path.join(path, "README.md")):
 #             self.context.append(Messages.User(self.summary_gen(os.path.join(path, "README.md")).content))
 
-@cache_fn(".cargo-docgen")
+@cache_fn(".cargo-aidoc")
 def _summary_gen(context: list[BaseMessageParam], content: str, path: str) -> str:
     while True:
         content = dynLLM(
@@ -47,7 +47,7 @@ def summary_gen(context: list[BaseMessageParam], path: str) -> BaseMessageParam 
             return None
         
 
-@cache_fn(".cargo-docgen")
+@cache_fn(".cargo-aidoc")
 def _docgen(context: str, code: str, indent: str = "") -> str:
     while True:
         resp = dynLLM(
